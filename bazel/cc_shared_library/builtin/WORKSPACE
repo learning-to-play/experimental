@@ -1,0 +1,4 @@
+local_repository(
+    name = "diamond2_center",
+    path = "diamond2/center",
+)
