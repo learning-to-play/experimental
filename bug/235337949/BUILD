@@ -29,7 +29,7 @@ cc_shared_library(
 filegroup(
     name = "get_pywrap_tensorflow_import_lib_file",
     srcs = [":_pywrap_tensorflow_internal.so"],
-    output_group = "main_shared_library_output",
+    output_group = "interface_library",
 )
 # END_CC_SHARED_LIBRARY_IMPLEMENTATION
 
