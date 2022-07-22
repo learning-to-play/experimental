@@ -50,15 +50,15 @@ cc_import(
 )
 
 # cc_binary implementation
-cc_binary(
-    name = "_pywrap_py_exception_registry.so",
-    srcs = [
-        "pywrap_py_exception_registry.cc",
-        ":libtensorflow_framework.so.2",
-    ],
-    deps = [":_pywrap_tensorflow_internal_linux"],
-    linkshared = True,
-)
+# cc_binary(
+#     name = "_pywrap_py_exception_registry.so",
+#     srcs = [
+#         "pywrap_py_exception_registry.cc",
+#         ":libtensorflow_framework.so.2",
+#     ],
+#     deps = [":_pywrap_tensorflow_internal_linux"],
+#     linkshared = True,
+# )
 
 # cc_shared_library implementation
 # cc_library(
@@ -77,3 +77,21 @@ cc_binary(
 #     dynamic_deps = [":libtensorflow_framework.so.2.10.0"],
 #     static_deps = ["//:__subpackages__"],
 # )
+
+# cc_shared_library_implementation 2
+cc_library(
+    name = "_pywrap_py_exception_registry.so_cclib",
+    srcs = ["pywrap_py_exception_registry.cc"],
+    deps = ["_pywrap_tensorflow_internal.so_cclib"],
+)
+
+cc_shared_library(
+    name = "_pywrap_py_exception_registry.so",
+    shared_lib_name = "_pywrap_py_exception_registry.so",
+    roots = [":_pywrap_py_exception_registry.so_cclib"],
+    dynamic_deps = [
+        ":libtensorflow_framework.so.2.10.0",
+        ":_pywrap_tensorflow_internal.so",
+    ],
+    static_deps = ["//:__subpackages__"],
+)
