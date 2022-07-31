@@ -24,6 +24,13 @@ genrule(
     )
 
 cc_library(
+    name = "py_exception_registry",
+    srcs = ["py_exception_registry.cc"],
+    hdrs = ["py_exception_registry.h"],
+    alwayslink = 1,
+)
+
+cc_library(
     name = "_pywrap_tensorflow_internal.so_cclib",
     srcs = ["pywrap_tensorflow_internal.cc"],
     deps = ["tensorflow_framework"],
