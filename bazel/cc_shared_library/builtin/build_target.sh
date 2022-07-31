@@ -1,7 +1,7 @@
 # Examples:
 # source build_target.sh hello_world:hello-world-shared
 
-USE_BAZEL_VERSION=last_green bazelisk build \
+bazelisk build \
   -c dbg \
   --experimental_cc_shared_library \
   --experimental_link_static_libraries_once=true \
