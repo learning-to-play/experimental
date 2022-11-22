@@ -33,3 +33,17 @@ cc_shared_library(
     roots = [":hello_greet"],
     win_def_file = "hello_greet_shared_head.def",
 )
+
+cc_shared_library(
+    name = "hello_greet_shared_full",
+    roots = [":hello_greet"],
+    win_def_file = "hello_greet_shared_full.def",
+)
+
+cc_binary(
+    name = "hello_world_shared",
+    srcs = ["hello_world.cc"],
+    dynamic_deps = ["hello_greet_shared_full"],
+    deps = ["hello_greet"],
+)
+
