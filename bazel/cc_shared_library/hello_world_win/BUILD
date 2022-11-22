@@ -40,10 +40,16 @@ cc_shared_library(
     win_def_file = "hello_greet_shared_full.def",
 )
 
-cc_binary(
-    name = "hello_world_shared",
+cc_binary(  # Fails
+    name = "hello_world_shared_head",
+    srcs = ["hello_world.cc"],
+    dynamic_deps = ["hello_greet_shared_head"],
+    deps = ["hello_greet"],
+)
+
+cc_binary(  # Runs
+    name = "hello_world_shared_full",
     srcs = ["hello_world.cc"],
     dynamic_deps = ["hello_greet_shared_full"],
     deps = ["hello_greet"],
 )
-
