@@ -24,7 +24,7 @@ cc_binary(
 )
 
 cc_shared_library(
-    name = "hello_greet_shared_all_exports",
+    name = "hello_greet_shared_no_exports",
     roots = [":hello_greet"],
 )
 
