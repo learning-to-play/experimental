@@ -47,7 +47,7 @@ cc_binary(  # Fails
     deps = ["hello_greet"],
 )
 
-cc_binary(  # Runs
+cc_binary(  # Works
     name = "hello_world_shared_full",
     srcs = ["hello_world.cc"],
     dynamic_deps = ["hello_greet_shared_full"],
