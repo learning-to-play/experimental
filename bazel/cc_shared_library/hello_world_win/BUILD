@@ -24,7 +24,7 @@ cc_binary(
 )
 
 cc_shared_library(
-    name = "hello_greet_shared_no_exports",
+    name = "hello_greet_shared_empty",
     roots = [":hello_greet"],
 )
 
@@ -38,6 +38,13 @@ cc_shared_library(
     name = "hello_greet_shared_full",
     roots = [":hello_greet"],
     win_def_file = "hello_greet_shared_full.def",
+)
+
+cc_binary(  # Fails
+    name = "hello_world_shared_empty",
+    srcs = ["hello_world.cc"],
+    dynamic_deps = ["hello_greet_shared_empty"],
+    deps = ["hello_greet"],
 )
 
 cc_binary(  # Fails
