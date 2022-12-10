@@ -16,11 +16,12 @@ if ${BUILD_PIP_PACKAGE}; then
 fi
 
 if ${BUILD_PIP_PACKAGE} && ${RUN_PIP_TESTS}; then
-  source ${BASH_SOURCE_DIR}/docker_run_pip_tests.sh
+  source ${BASH_SOURCE_DIR}/docker_setup_pip_tests.sh
+  source ${BASH_SOURCE_DIR}/docker_test_target_disk_cache.sh --config=pip
 fi
 
 if ${RUN_NONPIP_TESTS}; then
-  source ${BASH_SOURCE_DIR}/docker_run_nonpip_tests.sh
+  source ${BASH_SOURCE_DIR}/docker_test_target_disk_cache.sh --config=nonpip
 fi
 
 if ${BUILD_PIP_PACKAGE} && ${INSTALL_PIP_PACKAGE}; then
