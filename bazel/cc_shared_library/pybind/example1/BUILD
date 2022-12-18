@@ -8,10 +8,20 @@ cc_binary(
     linkshared = True,
 )
 
+genrule(
+    name = "copy_so_to_pyd",
+    srcs = ["pyext.so"],
+    outs = ["pyext.pyd"],
+    cmd = "cp $< $@",
+)
+
 py_binary(
     name = "mymodule",
     srcs = ["mymodule.py"],
-    data = [":pyext.so"],
+    data = select({
+        "//:windows": [":pyext.pyd"],
+        "//conditions:default": [":pyext.so"],
+    }),
     deps = [
         "@absl_py//absl:app",
         "@six_archive//:six",
