@@ -16,10 +16,21 @@ cc_shared_library(
     ],
 )
 
+# TODO: Replace genrule with shared_lib_name
+genrule(
+    name = "copy_so_to_pyd",
+    srcs = [":pyext"],
+    outs = ["libpyext.pyd"],
+    cmd = "cp $< $@",
+)
+
 py_library(
     name = "mymodule",
     srcs = ["mymodule.py"],
-    data = [":pyext"],
+    data = select({
+        "//:windows": [":libpyext.pyd"],
+        "//conditions:default": [":pyext"],
+    }),
 )
 
 py_test(
