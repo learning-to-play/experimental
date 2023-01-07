@@ -7,6 +7,7 @@ cc_library(
 cc_shared_library(
     name = "cppmodule",
     roots = ["_cppmodule"],
+    features = ["windows_export_all_symbols"],
 )
 
 cc_library(
@@ -21,6 +22,10 @@ cc_library(
 
 cc_shared_library(
     name = "pyext",
+    shared_lib_name = select({
+        "//:windows": "libpyext.pyd",
+       "//conditions:default": "libpyext.so",
+    }),
     roots = [":_pyext"],
     dynamic_deps = [":cppmodule"],
     static_deps = [
