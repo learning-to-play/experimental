@@ -9,6 +9,10 @@ cc_library(
 
 cc_shared_library(
     name = "pyext",
+    shared_lib_name = select({
+        "//:windows": "libpyext.pyd",
+       "//conditions:default": "libpyext.so",
+    }),
     roots = [":_pyext"],
     static_deps = [
         "@pybind11//:__subpackages__",
@@ -16,21 +20,10 @@ cc_shared_library(
     ],
 )
 
-# TODO: Replace genrule with shared_lib_name
-genrule(
-    name = "copy_so_to_pyd",
-    srcs = [":pyext"],
-    outs = ["libpyext.pyd"],
-    cmd = "cp $< $@",
-)
-
 py_library(
     name = "mymodule",
     srcs = ["mymodule.py"],
-    data = select({
-        "//:windows": [":libpyext.pyd"],
-        "//conditions:default": [":pyext"],
-    }),
+    data = [":pyext"],
 )
 
 py_test(
