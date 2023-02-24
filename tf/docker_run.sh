@@ -6,6 +6,7 @@ echo "-v ${WHEEL_DIR}:/tf/pkg \\"
 echo "-v ${TF_DIR}:/tf/tensorflow \\"
 echo "-v ${CACHE_DIR}:/tf/cache \\"
 
+# optional flag: --network=host
 sudo docker run --name tf -w /tf/tensorflow -it -d \
   -v "${WHEEL_DIR}:/tf/pkg" \
   -v "${TF_DIR}:/tf/tensorflow" \
