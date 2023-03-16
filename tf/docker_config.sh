@@ -3,7 +3,7 @@
 DOCKER_IMAGE="tensorflow/build:latest-python3.9"
 
 NUMPY_VERSION=1.21.2
-TF_VERSION=2.12.0
+TF_VERSION=2.13.0
 
 BUILD_PIP_PACKAGE=true
 RUN_PIP_TESTS=false
