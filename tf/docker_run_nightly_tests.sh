@@ -6,11 +6,11 @@ sudo rm -rf /tmp/packages/*
 source ${BASH_SOURCE_DIR}/docker_config.sh
 source ${BASH_SOURCE_DIR}/docker_pull.sh ${DOCKER_IMAGE}
 source ${BASH_SOURCE_DIR}/docker_run.sh ${DOCKER_IMAGE}
-# source ${BASH_SOURCE_DIR}/docker_update_version_nightly.sh
-source ${BASH_SOURCE_DIR}/docker_build_target_disk_cache.sh \
-  tensorflow/tools/pip_package:build_pip_package
 
 if ${BUILD_PIP_PACKAGE}; then
+  # source ${BASH_SOURCE_DIR}/docker_update_version_nightly.sh
+  source ${BASH_SOURCE_DIR}/docker_build_target_disk_cache.sh \
+    tensorflow/tools/pip_package:build_pip_package
   source ${BASH_SOURCE_DIR}/docker_construct_pip_package.sh
   source ${BASH_SOURCE_DIR}/docker_rename_and_verify_wheels.sh
 fi
