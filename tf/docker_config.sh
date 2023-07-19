@@ -2,11 +2,10 @@
 # gcr.io/tensorflow-sigs/build:57469-python3.9
 DOCKER_IMAGE="tensorflow/build:latest-python3.9"
 
-NUMPY_VERSION=1.21.2
-TF_VERSION=2.13.0
+NUMPY_VERSION=1.23.2
+TF_VERSION=2.14.0
 
-BUILD_PIP_PACKAGE=true
-RUN_PIP_TESTS=false
+BUILD_PIP_PACKAGE=false
 RUN_NONPIP_TESTS=false
 INSTALL_PIP_PACKAGE=false
 
