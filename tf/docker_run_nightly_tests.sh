@@ -15,7 +15,7 @@ if ${BUILD_PIP_PACKAGE}; then
   source ${BASH_SOURCE_DIR}/docker_rename_and_verify_wheels.sh
 fi
 
-if ${RUN_NONPIP_TESTS}; then
+if ${RUN_TESTS}; then
   source ${BASH_SOURCE_DIR}/docker_test_target_disk_cache.sh --config=nonpip
 fi
 
