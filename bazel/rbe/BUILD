@@ -3,7 +3,7 @@ load(":cc_toolchain_config.bzl", "cc_toolchain_config")
 package(default_visibility = ["//visibility:public"])
 
 toolchain(
-    name = "cc-toolchain",
+    name = "toolchain_x86_64_linux_clang",
     exec_compatible_with = [
         "@platforms//os:linux",
         "@platforms//cpu:x86_64",
@@ -13,22 +13,21 @@ toolchain(
         "@platforms//os:linux",
         "@platforms//cpu:x86_64",
     ],
-    toolchain = ":cc-compiler-k8",
+    toolchain = ":cc_toochain_k8",
     toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
 )
 
 cc_toolchain_suite(
-    name = "toolchain",
+    name = "cpp_toolchain_suite",
     toolchains = {
-        "k8|clang": ":cc-compiler-k8",
-        "k8": ":cc-compiler-k8",
+        "k8": ":cc_toochain_k8",
     },
 )
 
 cc_toolchain(
-    name = "cc-compiler-k8",
+    name = "cc_toochain_k8",
     toolchain_identifier = "linux_gnu_x86",
-    toolchain_config = ":linux_gnu_x86",
+    toolchain_config = ":cc_toolchain_config_k8",
     all_files = ":compiler_deps",
     ar_files = ":compiler_deps",
     as_files = ":compiler_deps",
@@ -46,7 +45,7 @@ filegroup(
 )
 
 cc_toolchain_config(
-    name = "linux_gnu_x86",
+    name = "cc_toolchain_config_k8",
     cpu = "k8",
     compiler = "clang",
     toolchain_identifier = "linux_gnu_x86",
@@ -122,7 +121,7 @@ cc_toolchain_config(
 )
 
 platform(
-    name = "platform",
+    name = "platform_x86_64_linux_clang",
     parents = ["@local_config_platform//:host"],
     constraint_values = [
         "@platforms//os:linux",
