@@ -13,19 +13,20 @@ toolchain(
         "@platforms//os:linux",
         "@platforms//cpu:x86_64",
     ],
-    toolchain = ":cc_toochain_k8",
+    toolchain = ":cc_toolchain_k8",
     toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
 )
 
 cc_toolchain_suite(
     name = "cpp_toolchain_suite",
     toolchains = {
-        "k8": ":cc_toochain_k8",
+        "k8": ":cc_toolchain_k8",
+        "darwin_arm64": ":cc_toolchain_k8",
     },
 )
 
 cc_toolchain(
-    name = "cc_toochain_k8",
+    name = "cc_toolchain_k8",
     toolchain_identifier = "linux_gnu_x86",
     toolchain_config = ":cc_toolchain_config_k8",
     all_files = ":compiler_deps",
