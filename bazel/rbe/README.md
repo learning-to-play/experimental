@@ -25,7 +25,7 @@ mv /tmp/rbe_default/* .
 # Builds using RBE
 bazelisk clean --expunge
 
-bazelisk --bazelrc=.bazelrc test //hello_world:say_hello_test \
+bazelisk --bazelrc=.bazelrc test //hello_world2:say_hello_test \
   --config=remote \
   --remote_instance_name=projects/tensorflow-devel/instances/metric_instance \
   --noremote_accept_cached \
