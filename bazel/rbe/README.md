@@ -25,6 +25,14 @@ mv /tmp/rbe_default/* .
 # Builds using RBE
 bazelisk clean --expunge
 
+bazelisk --bazelrc=.bazelrc build //hello_world1:hello_world \
+  --config=remote \
+  --remote_instance_name=projects/tensorflow-devel/instances/metric_instance \
+  --noremote_accept_cached \
+  --cache_test_results=no \
+  --subcommands \
+  --google_credentials=$HOME/.config/gcloud/application_default_credentials.json
+
 bazelisk --bazelrc=.bazelrc test //hello_world2:say_hello_test \
   --config=remote \
   --remote_instance_name=projects/tensorflow-devel/instances/metric_instance \
