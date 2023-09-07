@@ -31,6 +31,7 @@ bazelisk --bazelrc=.bazelrc build //hello_world1:hello_world \
   --noremote_accept_cached \
   --cache_test_results=no \
   --subcommands \
+  --execution_log_json_file=/tmp/execlog.json \
   --google_credentials=$HOME/.config/gcloud/application_default_credentials.json
 
 bazelisk --bazelrc=.bazelrc test //hello_world2:say_hello_test \
@@ -39,5 +40,6 @@ bazelisk --bazelrc=.bazelrc test //hello_world2:say_hello_test \
   --noremote_accept_cached \
   --cache_test_results=no \
   --subcommands \
+  --execution_log_json_file=/tmp/execlog.json \
   --google_credentials=$HOME/.config/gcloud/application_default_credentials.json
 
