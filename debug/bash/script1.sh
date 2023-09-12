@@ -1,5 +1,5 @@
 echo 1
 echo 2
-VAR=0
+VAR=$@
 cd wrong/path
 echo 3

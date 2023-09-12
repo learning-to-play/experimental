@@ -1,7 +1,7 @@
 echo 1
-set -x
+set -xv
 echo 2
-VAR=0
+VAR=$@
 cd wrong/path
-set +x
+set +xv
 echo 3
