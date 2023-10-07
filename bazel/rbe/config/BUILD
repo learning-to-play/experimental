@@ -42,7 +42,7 @@ platform(
         "@bazel_tools//tools/cpp:clang",
     ],
     exec_properties = {
-        "container-image": "docker://us-central1-docker.pkg.dev/tensorflow-devel/tensorflow-devel-testing-private/cross-compile@sha256:84755f3666119ff51c626fd87a3b7c7f80652e3e096398fc4223730885111845",
+        "container-image": "docker://us-central1-docker.pkg.dev/tensorflow-devel/tensorflow-devel-testing-private/cross-compile@sha256:62b5a2bbac7bfdfad6c14fab4605b631c1328d413b8cb0a893889d3222721dcd",
         "OSFamily": "Linux",
     },
 )
