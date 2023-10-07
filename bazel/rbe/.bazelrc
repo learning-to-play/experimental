@@ -40,3 +40,9 @@ build:remote --incompatible_strict_action_env=true
 # default. You can use --google_credentials=some_file.json to use a service
 # account credential instead.
 build:remote --google_default_credentials=true
+
+# Additional configs needed for building TensorFlow with RBE Linux
+common:tensorflow --experimental_repo_remote_exec
+build:tensorflow --spawn_strategy=remote,worker,standalone,local
+build:tensorflow --cxxopt=-std=c++17
+build:tensorflow --host_cxxopt=-std=c++17
