@@ -22,16 +22,18 @@ $ mv /tmp/rbe_default/* .
 $ bazelisk clean --expunge && bazelisk --bazelrc=.bazelrc build //hello_world1:hello_world \
   --config=remote \
   --remote_instance_name=projects/tensorflow-devel/instances/metric_instance \
-  --noremote_accept_cached \
-  --cache_test_results=no \
   --subcommands \
   --execution_log_json_file=/tmp/execlog.json \
   --google_credentials=$HOME/.config/gcloud/application_default_credentials.json
 $ bazelisk clean --expunge && bazelisk --bazelrc=.bazelrc test //hello_world2:say_hello_test \
   --config=remote \
   --remote_instance_name=projects/tensorflow-devel/instances/metric_instance \
-  --noremote_accept_cached \
-  --cache_test_results=no \
+  --subcommands \
+  --execution_log_json_file=/tmp/execlog.json \
+  --google_credentials=$HOME/.config/gcloud/application_default_credentials.json
+$ bazelisk clean --expunge && bazelisk test //genrule:module_test \
+  --config=remote \
+  --remote_instance_name=projects/tensorflow-devel/instances/metric_instance \
   --subcommands \
   --execution_log_json_file=/tmp/execlog.json \
   --google_credentials=$HOME/.config/gcloud/application_default_credentials.json
@@ -45,7 +47,5 @@ $ cd tensorflow
 $ bazelisk clean --expunge && bazelisk test //tensorflow/cc:framework_cc_ops_test \
   --config=remote \
   --config=tensorflow \
-  --noremote_accept_cached \
-  --cache_test_results=no \
   --remote_instance_name=projects/tensorflow-devel/instances/metric_instance
 ```
