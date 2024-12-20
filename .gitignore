@@ -1,2 +1,3 @@
 tensorflow/
 **/bazel-*
+**/.ipynb_checkpoints
