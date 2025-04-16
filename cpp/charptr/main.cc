@@ -17,6 +17,12 @@ int main()
     cout << data[2] << endl;
     cout << data[3] << endl;
     cout << data[10] << endl;
+
+    data[2] = 'c';
+    data[4] = 'e';
+    data[5] = 'f';
+
+    cout << data << endl;
  
     return 0;
 }
